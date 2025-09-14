@@ -37,8 +37,8 @@ export default function Signup() {
   const AddNewUser = () => {
     axios
       .post(
-        `https://good-puce-hummingbird-garb.cyclic.app/user/register`,
-        SignupData
+        `${process.env.REACT_APP_API_URL}/admin/register`, 
+                SignupData
       )
       .then((res) => {
         toast({

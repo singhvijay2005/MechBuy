@@ -33,7 +33,7 @@ export default function Login() {
   const CheckUser = () => {
     axios
       .post(
-        `https://good-puce-hummingbird-garb.cyclic.app/user/login`,
+        `${process.env.REACT_APP_API_URL}/admin/register`, 
         LoginData
       )
       .then((res) => {

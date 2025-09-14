@@ -37,7 +37,7 @@ export default function AdminSignup() {
   const AddNewAdmin = () => {
     axios
       .post(
-        `https://good-puce-hummingbird-garb.cyclic.app/admin/register`,
+        `${process.env.REACT_APP_API_URL}/admin/register`,
         SignupData
       )
       .then((res) => {

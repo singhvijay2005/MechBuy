@@ -1,3 +1,13 @@
+require('dotenv').config();
+const mongoose = require('mongoose');
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log('MongoDB connected 🎉'))
+.catch(err => console.log('MongoDB connection error: ', err));
 const express = require("express");
 const { connection } = require("./db/db");
 const { approute } = require("./routes/user.route");
@@ -15,9 +25,14 @@ const { adminroute } = require("./routes/Admin.route");
 const { middleware } = require("./middleware/middleware");
 const cors = require("cors");
 const app = express();
+
 app.use(cors());
 app.use(express.json());
-
+// Enable CORS for React frontend
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true
+}));
 app.use("/admin", adminroute);
 app.use("/user", approute);
 app.use("/category", categoryroute);

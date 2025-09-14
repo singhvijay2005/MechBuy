@@ -33,7 +33,7 @@ export default function AdminLogin() {
   const CheckAdmin = () => {
     axios
       .post(
-        `https://good-puce-hummingbird-garb.cyclic.app/admin/login`,
+       `${process.env.REACT_APP_API_URL}/admin/register`,
         AdminLoginData
       )
       .then((res) => {
